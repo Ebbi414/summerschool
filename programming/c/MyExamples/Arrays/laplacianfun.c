@@ -1,10 +1,12 @@
 #include "funH.h\
 "
 
-double *laplacian(double array[NX][NY])
-{
+int  main(void){
 
-    int i, j, error_code;
+    double *laplacian(double array[NX][NY])
+    {
+
+    int i, j; //error_code;
     static double laplacian[NX][NY]; //make the variable global
 
     // Zero out the outer boundary of laplacian
@@ -29,7 +31,7 @@ double *laplacian(double array[NX][NY])
     // *INDENT-ON*
 
     // Call the png writer routine
-/*    error_code = save_png((double *) laplacian, NX, NY, "datastructures_functions_heat-a_b.png", 'c');
+    /* error_code = save_png((double *) laplacian, NX, NY, "datastructures_functions_heat-a_b.png", 'c');
 
     if (error_code == 0) {
         printf("Wrote the output file datastructures_functions_heat-a_b.png\n");
@@ -39,3 +41,4 @@ double *laplacian(double array[NX][NY])
 
     return &laplacian[0][0];
 }
+

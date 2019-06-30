@@ -13,5 +13,5 @@
 
 int array_values(double a[NX][NY]);
 
-double *laplacian(double array[NX][NY]);
+double* laplacian(double array[NX][NY]);
 #endif

@@ -7,11 +7,11 @@ void init_field(field *f, int nx, int ny)
 {
     int i, j;
 
-    f->nx = nx;
+    f->nx = nx;  //=(*f).xn f is a pointer to a struct so to access a member (*f).xn = f->xn
     f->ny = ny;
     f->dx = DX;
     f->dy = DY;
-    f->dx2 = DX * DX;
+    f->dx2 = DX * DX; //access dx2 from the struct *f((*f).dx2) and then assign value DX * DX
     f->dy2 = DY * DY;
 
     // First zero out the inner part of the array
@@ -40,14 +40,14 @@ void print_field(field *f)
     // TODO: Fix the call to png writing. Note that since we now have a
     // dynamically allocated 2D array, we need to pass on a pointer to the
     // first element (=row) of the array instead of the array itself.
-    error_code = save_png(..., ..., ..., "dynamic_array.png", 'c');
+    error_code = save_png((double *) f->data[0], f->nx + 2, f->ny + 2, "dynamic_array.png", 'c');
     if (error_code == 0) {
         printf("Wrote output file dynamic_array.png\n");
     } else {
         printf("Error while writing output file dynamic_array.png\n");
     }
 }
-#include<stdio.h>
+
 int main(int argc, char *argv[])
 {
     int nx, ny;
@@ -64,12 +64,16 @@ int main(int argc, char *argv[])
     // atoi function converts a string to integer
     nx = atoi(argv[1]);
     ny = atoi(argv[2]);
-
+    
     // TODO: Allocate memory for a 2D array (nx,ny). Remember to allocate
     // space also for a ghost layer around the real data.
 
-    matrix = malloc(rowa * cols * sizeof(int));
-    matrix = malloc()
+    temperature.data = (double**)malloc((nx+2)*sizeof(double*));
+    temperature.data[0]=(double*)malloc((nx+2)*(ny+2)*sizeof(double));
+    for (i=1; i<nx+2; i++){
+	temperature.data[i] = temperature.data[0]+i*(ny+2);
+    }   
+     
 
     // Initialize field and print out the result
     init_field(&temperature, nx, ny);
@@ -77,6 +81,7 @@ int main(int argc, char *argv[])
 
     // Free memory allocation
     // TODO: Free memory allocations
-
+    free(temperature.data[0]);
+    free(temperature.data);
     return 0;
 }

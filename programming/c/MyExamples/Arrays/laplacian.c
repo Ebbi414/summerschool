@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "pngwriter.h"
+//#include "pngwriter.h"
 
 #define NX 258
 #define NY 258
@@ -43,7 +43,7 @@ int main(void)
 
     // Evaluate the Laplacian
     // *INDENT-OFF*
-#error Add the missing part
+
     for (i = 1; i < NX - 2; i++) {
         for (j = 1; j < NY - 2; j++) {
             laplacian[i][j] =
@@ -54,13 +54,13 @@ int main(void)
     // *INDENT-ON*
 
     // Call the png writer routine
-    error_code = save_png((double *) laplacian, NX, NY, "datastructures_functions_heat-a_b.png", 'c');
+    //  error_code = save_png((double *) laplacian, NX, NY, "datastructures_functions_heat-a_b.png", 'c');
 
-    if (error_code == 0) {
-        printf("Wrote the output file datastructures_functions_heat-a_b.png\n");
-    } else {
-        printf("Error while writing output file datastructures_functions_heat-a_b.png\n");
-    }
+   // if (error_code == 0) {
+     //   printf("Wrote the output file datastructures_functions_heat-a_b.png\n");
+   // } else {
+     //   printf("Error while writing output file datastructures_functions_heat-a_b.png\n");
+   // } */
 
     return 0;
 }

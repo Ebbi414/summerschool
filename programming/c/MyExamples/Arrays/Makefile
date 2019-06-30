@@ -14,13 +14,14 @@ CCFLAGS=-O3 -Wall
 LIBS=-lpng
 endif
 
-EXE=laplacian
-OBJS=pngwriter.o laplacian.o
+
+EXE=dynamic_array
+OBJS=pngwriter.o dynamic_array.o
 
 all: $(EXE)
 
 pngwriter.o: pngwriter.c pngwriter.h
-laplacian.o: laplacian.c
+dynamic_array.o: dynamic_array.c
 
 $(EXE): $(OBJS)
 	$(CC) $(CCFLAGS) $(OBJS) -o $@ $(LIBS)

@@ -1,0 +1,45 @@
+==170537== NVPROF is profiling process 170537, command: ./sum
+==170537== Profiling application: ./sum
+==170537== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.77%  135.55us         2  67.775us  67.072us  68.479us  [CUDA memcpy HtoD]
+                   31.21%  63.360us         1  63.360us  63.360us  63.360us  [CUDA memcpy DtoH]
+                    2.02%  4.0960us         1  4.0960us  4.0960us  4.0960us  main_25_gpu
+      API calls:   68.14%  273.90ms         1  273.90ms  273.90ms  273.90ms  cuDevicePrimaryCtxRetain
+                   20.14%  80.973ms         1  80.973ms  80.973ms  80.973ms  cuDevicePrimaryCtxRelease
+                    7.99%  32.122ms         1  32.122ms  32.122ms  32.122ms  cuMemHostAlloc
+                    3.17%  12.743ms         1  12.743ms  12.743ms  12.743ms  cuMemFreeHost
+                    0.32%  1.2843ms         1  1.2843ms  1.2843ms  1.2843ms  cuMemAllocHost
+                    0.13%  522.19us         4  130.55us  7.7600us  271.63us  cuMemAlloc
+                    0.03%  100.94us         1  100.94us  100.94us  100.94us  cuModuleLoadData
+                    0.02%  97.656us         3  32.552us  3.8470us  51.486us  cuStreamSynchronize
+                    0.02%  87.984us         1  87.984us  87.984us  87.984us  cuLaunchKernel
+                    0.01%  48.458us         2  24.229us  10.857us  37.601us  cuMemcpyHtoDAsync
+                    0.01%  27.013us         1  27.013us  27.013us  27.013us  cuStreamCreate
+                    0.00%  12.838us         1  12.838us  12.838us  12.838us  cuMemcpyDtoHAsync
+                    0.00%  7.4720us         3  2.4900us     480ns  6.0830us  cuCtxSetCurrent
+                    0.00%  6.0670us         3  2.0220us  1.0530us  2.9150us  cuPointerGetAttributes
+                    0.00%  5.4260us         1  5.4260us  5.4260us  5.4260us  cuEventRecord
+                    0.00%  4.7170us         1  4.7170us  4.7170us  4.7170us  cuDeviceGetPCIBusId
+                    0.00%  4.1570us         2  2.0780us     863ns  3.2940us  cuEventCreate
+                    0.00%  2.9450us         1  2.9450us  2.9450us  2.9450us  cuEventSynchronize
+                    0.00%  2.0450us         1  2.0450us  2.0450us  2.0450us  cuModuleGetFunction
+                    0.00%  1.6990us         4     424ns     327ns     669ns  cuDeviceGetAttribute
+                    0.00%  1.5320us         3     510ns     230ns     820ns  cuDeviceGetCount
+                    0.00%  1.3640us         1  1.3640us  1.3640us  1.3640us  cuCtxGetCurrent
+                    0.00%  1.1830us         2     591ns     287ns     896ns  cuDeviceGet
+                    0.00%     438ns         1     438ns     438ns     438ns  cuDeviceComputeCapability
+                    0.00%     401ns         1     401ns     401ns     401ns  cuDriverGetVersion
+ OpenACC (excl):   96.67%  33.192ms         1  33.192ms  33.192ms  33.192ms  acc_enter_data@sum.c:25
+                    1.47%  503.88us         1  503.88us  503.88us  503.88us  acc_wait@sum.c:31
+                    0.58%  198.05us         1  198.05us  198.05us  198.05us  acc_device_init@sum.c:25
+                    0.41%  142.44us         1  142.44us  142.44us  142.44us  acc_exit_data@sum.c:25
+                    0.28%  94.464us         1  94.464us  94.464us  94.464us  acc_enqueue_launch@sum.c:25 (main_25_gpu)
+                    0.19%  65.320us         2  32.660us  13.318us  52.002us  acc_enqueue_upload@sum.c:25
+                    0.16%  55.562us         1  55.562us  55.562us  55.562us  acc_compute_construct@sum.c:25
+                    0.15%  51.603us         2  25.801us  5.3040us  46.299us  acc_wait@sum.c:25
+                    0.09%  30.896us         1  30.896us  30.896us  30.896us  acc_enqueue_download@sum.c:31
+                    0.00%       0ns         3       0ns       0ns       0ns  acc_create@sum.c:25
+                    0.00%       0ns         3       0ns       0ns       0ns  acc_delete@sum.c:31
+                    0.00%       0ns         3       0ns       0ns       0ns  acc_alloc@sum.c:25
+Reduction sum: 13.7587868405645448
